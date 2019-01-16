@@ -76,8 +76,8 @@
     "use strict";
     var length = 3;
     for (let p = 0; p < length; p += 1) {
+        setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 5400);
 
-        document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
         var i, x;
         var idArr = [];
         var meta_a = document.getElementsByTagName('a');
@@ -98,7 +98,7 @@
                 sessionStorage.setItem('id', n);
             }
         }
-        setTimeout("document.querySelectorAll(\'#gl-pagenav a\')[1].click();", 4000);
+        setTimeout("document.querySelectorAll(\'#gl-pagenav a\')[1].click();", 5600);
         //document.querySelectorAll('#gl-pagenav a')[1].click();
     }
 }();
