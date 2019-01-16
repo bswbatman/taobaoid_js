@@ -44,7 +44,7 @@
 
 !function () {
     "use strict";
-    var length = 10;
+    var length = 3;
     for (let p = 0; p < length; p += 1) {
         var i, x;
         var idArr = [];
@@ -56,7 +56,7 @@
             if (idurl === -1) {
                 continue
             }
-            console.log(x.href.split('id=')[1]);
+            //console.log(x.href.split('id=')[1]);
             idArr.push(x.href.split('id=')[1])
         }
         if (p === 0) {
@@ -66,6 +66,8 @@
             n = n.concat(idArr);
             sessionStorage.setItem('id', n);
         }
-        document.querySelectorAll('#gl-pagenav a')[1].click();
+        setTimeout("document.querySelectorAll(\'#gl-pagenav a\')[1].click();",4000);
+        //document.querySelectorAll('#gl-pagenav a')[1].click();
+
     }
 }();
