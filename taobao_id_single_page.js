@@ -76,6 +76,7 @@
     "use strict";
     var length = 3;
     for (let p = 0; p < length; p += 1) {
+
         document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
         var i, x;
         var idArr = [];
