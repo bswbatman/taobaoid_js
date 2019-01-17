@@ -175,3 +175,42 @@ console.log('click over')
     }
     console.log(idArr)
 }();
+
+
+
+!function () {
+    var length = 10;
+    var idArr = [];
+    for (let p = 0; p < length; p += 1) {
+		alert("滚动到最下面"); 
+        //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 10000);
+        document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+        var i, x;
+        
+        var meta_a = document.getElementsByTagName('a');
+        //console.log(meta_a[0].href)
+        for (i = 0; i < meta_a.length; i++) {
+            x = meta_a[i];
+            
+            var idurl = x.href.indexOf('https://h5.m.taobao.com/awp/core/detail.htm?id=')
+console.log('click over')
+            if (idurl === -1) {
+                continue
+            }
+            //console.log(x.href.split('id=')[1]);
+			console.log(x.href.split('id=')[1])
+            idArr.push(x.href.split('id=')[1])
+//             if (p === 0) {
+//                 sessionStorage.setItem('id', idArr);
+//             } else {
+//                 let n = sessionStorage.getItem('id');
+//                 n = n.concat(idArr);
+//                 sessionStorage.setItem('id', n);
+//             }
+        }
+		alert("点击下一页"); 
+        //setTimeout("document.querySelectorAll(\'#gl-pagenav a\')[1].click();", 10000);
+        document.querySelectorAll('#gl-pagenav a')[1].click();
+    }
+    console.log(idArr)
+}();
