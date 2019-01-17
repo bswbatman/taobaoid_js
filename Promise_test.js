@@ -70,71 +70,90 @@ function test() {
 
 //text - 2
 
-var i = 0;
-var timee = 5000
-var meta_a = document.getElementsByTagName('a');
-
-function clicks() {
-    return new Promise(function (resolve, reject) {
-        //log('乘法运行---' + input + ' + ' + input + '...');
-        setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
-        i += 1
-    });
-}
-
-function huadong() {
-    return new Promise(function (resolve, reject) {
-        //log('乘法运行---' + input + ' + ' + input + '...');
-        setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 12000 * i + 5000);
-    });
-}
-
-!function () {
-    var p = new Promise(function (resolve, reject) {
-        //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
-        //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
-        resolve();
-    })
-        .then(huadong).then(clicks)
-        .then(huadong).then(clicks)
-        .then(huadong).then(clicks)
-        .then(huadong).then(clicks)
-}();
+// var i = 0;
+// var timee = 5000
+// var meta_a = document.getElementsByTagName('a');
+//
+// function clicks() {
+//     return new Promise(function (resolve, reject) {
+//         //log('乘法运行---' + input + ' + ' + input + '...');
+//         setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
+//         i += 1
+//     });
+// }
+//
+// function huadong() {
+//     return new Promise(function (resolve, reject) {
+//         //log('乘法运行---' + input + ' + ' + input + '...');
+//         setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 12000 * i + 5000);
+//     });
+// }
+//
+// !function () {
+//     var p = new Promise(function (resolve, reject) {
+//         //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
+//         //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+//         resolve();
+//     })
+//         .then(huadong).then(clicks)
+//         .then(huadong).then(clicks)
+//         .then(huadong).then(clicks)
+//         .then(huadong).then(clicks)
+// }();
 
 
 //finall
 var i = 0;
-var timee = 5000
-var meta_a = document.getElementsByTagName('a');
+var idArr = [];
 
 function clicks() {
     return new Promise(function (resolve, reject) {
-        //log('乘法运行---' + input + ' + ' + input + '...');
-		console.log('点击前:'+i)
+        console.log('点击前:' + i)
         setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
         i += 1
-		console.log('点击后:'+i)
-		resolve();
+        console.log('点击后:' + i)
+        resolve();
     });
 }
 
 function huadong() {
     return new Promise(function (resolve, reject) {
-        //log('乘法运行---' + input + ' + ' + input + '...');
         setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 12000 * i + 5000);
-		console.log('huadong:'+i)
-		resolve();
+        console.log('huadong:' + i)
+        resolve();
     });
+}
+
+function get_id() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(make_id,12000*i + 6000)
+        console.log('本页完成')
+        resolve();
+    });
+}
+
+function make_id() {
+    var meta_a = document.getElementsByTagName('a');
+    var j, x;
+    for (j = 0; j <= meta_a.length; j++) {
+        x = meta_a[j];
+
+        var idurl = x.href.indexOf('https://h5.m.taobao.com/awp/core/detail.htm?id=')
+        if (idurl === -1) {
+            continue
+        }
+        console.log(x.href.split('id=')[1])
+        idArr.push(x.href.split('id=')[1])
+    }
 }
 
 !function () {
     var p = new Promise(function (resolve, reject) {
-        //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
-        //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
         resolve();
     })
-        .then(huadong).then(clicks)
-        .then(huadong).then(clicks)
-        .then(huadong).then(clicks)
-        .then(huadong).then(clicks)
+        .then(huadong).then(get_id).then(clicks)
+        .then(huadong).then(get_id).then(clicks)
+        .then(huadong).then(get_id).then(clicks)
+        .then(huadong).then(get_id).then(clicks).then(get_id)
+
 }();
