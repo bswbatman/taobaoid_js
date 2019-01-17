@@ -219,11 +219,11 @@ console.log('click over')
 !function () {
     var length = 2;
     var idArr = [];
-    for (let p = 0; p <= length; p += 1) {
+    for (let p = 2; p <= length; p += 1) {
 		alert("滚动到最下面"); 
-        //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 10000);
+        setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 5000);
 		//setTimeout("console.log('滚动到下一页')",2000)
-        document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+        //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
 		alert("滚动完成"); 
         var i, x;
         
@@ -249,9 +249,31 @@ console.log('click over')
 //             }
         }
 		alert("点击下一页"); 
-        //setTimeout("document.querySelectorAll(\'#gl-pagenav a\')[1].click();", 10000);
-        document.querySelectorAll('#gl-pagenav a')[1].click();
+        setTimeout("document.querySelectorAll(\'#gl-pagenav a\')[1].click();", 10000);
+        //document.querySelectorAll('#gl-pagenav a')[1].click();
 		alert("点击完成"); 
     }
     console.log(idArr)
 }();
+
+
+
+new Promise(function (resolve, reject) {
+    log('开始...');
+    var timeOut = Math.random() * 2;
+    log('随机时间: ' + timeOut + ' seconds.');
+    setTimeout(function () {
+        if (timeOut < 1) {
+            log('调用 resolve()...');
+            resolve('200 OK');
+        }
+        else {
+            log('调用 reject()...');
+            reject('timeout in ' + timeOut + ' seconds.');
+        }
+    }, timeOut );
+}).then(function (r) {
+    log('成功: ' + r);
+}).catch(function (reason) {
+    log('失败: ' + reason);
+});
