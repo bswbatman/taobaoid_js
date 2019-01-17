@@ -219,7 +219,7 @@ console.log('click over')
 !function () {
     var length = 2;
     var idArr = [];
-    for (let p = 0; p < length; p += 1) {
+    for (let p = 0; p <= length; p += 1) {
 		alert("滚动到最下面"); 
         //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 10000);
 		//setTimeout("console.log('滚动到下一页')",2000)
