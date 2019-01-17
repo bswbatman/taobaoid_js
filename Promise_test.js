@@ -33,6 +33,43 @@ function test() {
 
 
 // text
+// var i = 0;
+// var timee = 5000
+// var meta_a = document.getElementsByTagName('a');
+//
+// function clicks() {
+//     return new Promise(function (resolve, reject) {
+//         //log('乘法运行---' + input + ' + ' + input + '...');
+//         setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000*i+7000);
+//     });
+// }
+//
+// function loog() {
+//     return new Promise(function (resolve, reject) {
+//         //log('乘法运行---' + input + ' + ' + input + '...');
+//         setTimeout("console.log('ddddddddd')", 500);
+//     });
+// }
+//
+// function huadong() {
+//         return new Promise(function (resolve, reject) {
+//         //log('乘法运行---' + input + ' + ' + input + '...');
+//         setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 12000*i+7000);
+//     });
+// }
+//
+// !function () {
+//     for (i=0;i<=5;i++) {
+//         var p = new Promise(function (resolve, reject) {
+//             setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
+//             //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+//             resolve();
+//         }).then(clicks)
+//     }
+// }();
+
+//text - 2
+
 var i = 0;
 var timee = 5000
 var meta_a = document.getElementsByTagName('a');
@@ -40,32 +77,64 @@ var meta_a = document.getElementsByTagName('a');
 function clicks() {
     return new Promise(function (resolve, reject) {
         //log('乘法运行---' + input + ' + ' + input + '...');
-        setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000*i+7000);
-    });
-}
-
-function loog() {
-    return new Promise(function (resolve, reject) {
-        //log('乘法运行---' + input + ' + ' + input + '...');
-        setTimeout("console.log('ddddddddd')", 500);
+        setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
+        i += 1
     });
 }
 
 function huadong() {
-        return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         //log('乘法运行---' + input + ' + ' + input + '...');
-        setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000*i+7000);
+        setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 12000 * i + 5000);
     });
 }
 
 !function () {
-    for (i=0;i<=5;i++) {
-        var p = new Promise(function (resolve, reject) {
-            setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
-            //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
-            resolve();
-        }).then(clicks)
-    }
+    var p = new Promise(function (resolve, reject) {
+        //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
+        //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+        resolve();
+    })
+        .then(huadong).then(clicks)
+        .then(huadong).then(clicks)
+        .then(huadong).then(clicks)
+        .then(huadong).then(clicks)
 }();
 
 
+//finall
+var i = 0;
+var timee = 5000
+var meta_a = document.getElementsByTagName('a');
+
+function clicks() {
+    return new Promise(function (resolve, reject) {
+        //log('乘法运行---' + input + ' + ' + input + '...');
+		console.log('点击前:'+i)
+        setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
+        i += 1
+		console.log('点击后:'+i)
+		resolve();
+    });
+}
+
+function huadong() {
+    return new Promise(function (resolve, reject) {
+        //log('乘法运行---' + input + ' + ' + input + '...');
+        setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;", 12000 * i + 5000);
+		console.log('huadong:'+i)
+		resolve();
+    });
+}
+
+!function () {
+    var p = new Promise(function (resolve, reject) {
+        //setTimeout("document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;",12000*i+5000);
+        //document.scrollingElement.scrollTop = document.scrollingElement.scrollHeight;
+        resolve();
+    })
+        .then(huadong).then(clicks)
+        .then(huadong).then(clicks)
+        .then(huadong).then(clicks)
+        .then(huadong).then(clicks)
+}();
