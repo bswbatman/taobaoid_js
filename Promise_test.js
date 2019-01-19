@@ -5,6 +5,7 @@ function clicks() {
     return new Promise(function (resolve, reject) {
         console.log('点击前:' + i)
         setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
+        //setTimeout("document.querySelectorAll('#gl-pagenav a')[1].click();", 12000 * i + 7000);
         i += 1
         console.log('点击后:' + i)
         resolve();
