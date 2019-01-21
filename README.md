@@ -1,0 +1,3 @@
+# taobaoid_js
+在chrome中获取淘宝商品id
+挺简单的使用js中的Promise
